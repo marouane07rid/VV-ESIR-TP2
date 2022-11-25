@@ -38,3 +38,14 @@ Il y a possibilité d'éviter les deux conditions IF, en retournant directement 
 
         return (!getMatchingLongOptions(t).isEmpty() || getLongPrefix(token) != null && !token.startsWith("--"));
     }```
+
+
+La seconde recommandation que nous avons choisi est "uncommented empty method body" à la ligne 36 du fichier BasicParserTest.java. Voici la fonction en question:
+
+```@Override
+    @Test
+    @Ignore("not supported by the BasicParser")
+    public void testAmbiguousLongWithoutEqualSingleDash() throws Exception {
+    }```
+    
+    La fonction n'est en effet pas commentée mais elle possède des annotations qui ne sont pas considérées comme des commentaires par pmd, mais qui fournissent pourtant des informations sur la fonction (ex: "not supported by the BasicParser"). Il n'y a ici aucune modification à faire.
