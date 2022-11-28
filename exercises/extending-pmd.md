@@ -23,4 +23,46 @@ Use your rule with different projects and describe you findings below. See the [
 
 ## Answer
 
-extension
+```<rule name="IfStatement"
+      language="java"
+      message="to many if statement"
+      class="net.sourceforge.pmd.lang.rule.XPathRule">
+   <description>
+
+   </description>
+   <priority>3</priority>
+   <properties>
+      <property name="version" value="2.0"/>
+      <property name="xpath">
+         <value>
+<![CDATA[
+//IfStatement[count(ancestor::IfStatement)>=2]
+]]>
+         </value>
+      </property>
+   </properties>
+</rule>
+```
+
+We use this rule to analyze de common-cli project. Here is one of the recommendation in commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:178
+```
+public Properties getOptionProperties(final Option option) {
+        final Properties props = new Properties();
+
+        for (final Option processedOption : options) {
+            if (processedOption.equals(option)) {
+                final List<String> values = processedOption.getValuesList();
+                if (values.size() >= 2) {
+                    // use the first 2 arguments as the key/value pair
+                    props.put(values.get(0), values.get(1));
+                } else if (values.size() == 1) {
+                    // no explicit value, handle it as a boolean
+                    props.put(values.get(0), "true");
+                }
+            }
+        }
+
+        return props;
+    }
+```
+In this for(), three if are detected and reported correctly by the rule.
