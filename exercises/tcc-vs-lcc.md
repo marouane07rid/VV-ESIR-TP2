@@ -6,3 +6,20 @@ Explain under which circumstances *Tight Class Cohesion* (TCC) and *Loose Class 
 
 TCC=LCC=1 is a maximally cohesive class: all methods are connected. It means that the number of indirect connections is null
 The higher TCC and LCC, the more cohesive the class is.
+
+```
+public class Concat {
+ 
+    private String str1;
+    private String str2;
+ 
+    public Concat(int _str1, int _str2){
+        this.str1 = _str1;
+        this.str2 = _str2;
+    }
+ 
+    public String concat(){
+        return str1+str2;    
+    }
+}
+```
