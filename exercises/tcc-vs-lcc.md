@@ -4,3 +4,5 @@ Explain under which circumstances *Tight Class Cohesion* (TCC) and *Loose Class 
 
 ## Answer
 
+TCC=LCC=1 is a maximally cohesive class: all methods are connected. It means that the number of indirect connections is null
+The higher TCC and LCC, the more cohesive the class is.
