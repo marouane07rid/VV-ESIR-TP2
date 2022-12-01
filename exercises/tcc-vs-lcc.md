@@ -4,3 +4,20 @@ Explain under which circumstances *Tight Class Cohesion* (TCC) and *Loose Class 
 
 ## Answer
 
+If TCC=LCC=1, it means that this class is a maximally cohesive class where all methods are directly connected to each other.
+
+```public class Lcc_tcc {
+    
+    public boolean fct1() {
+        return fct2();
+    }
+
+    public boolean fct2() {
+        return fct3() && true;
+    }
+
+    public boolean fct3() {
+        return false;
+    }
+}
+```
