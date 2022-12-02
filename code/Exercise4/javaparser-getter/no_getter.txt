@@ -1,4 +1,2 @@
-Arrtibuts sans getter :
+Private field without getter :
 
-method
-no_getter
